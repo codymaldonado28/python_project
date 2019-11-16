@@ -1,0 +1,17 @@
+{%if messages%}
+<ul>
+    {%for message in messages%}
+    <li style='color:red'>{{message}}</li>
+    {%endfor%}
+</ul>
+{%endif%}
+<form method="POST" action="/trip/edit/{{trip.id}}/create">
+    {% csrf_token %}
+    Destination:<input type='text' name='destination' placeholder="{{trip.destination}}"><br>
+    Start Date {{trip.start_date}}:<input type="date" name='start_date'  placeholder="{{trip.start_date}}"><br>
+    End Date {{trip.end_date}}:<input type="date" name='end_date'  placeholder="{{trip.end_date}}"><br>
+    Plan:<input type="text" name='plan' placeholder="{{trip.plan}}">
+    <button type='submit'>Submit</button><br>
+</form>
+<button ><a href='/profile'>Cancel</a></button>
+<a href='/logout'>logout</a>

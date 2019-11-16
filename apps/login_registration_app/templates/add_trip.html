@@ -1,0 +1,17 @@
+{%if messages%}
+<ul>
+    {%for message in messages%}
+    <li style='color:red'>{{message}}</li>
+    {%endfor%}
+</ul>
+{%endif%}
+<form method="POST" action="/trip/create">
+    {% csrf_token %}
+    Destination:<input type='text' name='destination'><br>
+    Start Date:<input type="date" name='start_date' ><br>
+    End Date:<input type="date" name='end_date' ><br>
+    Plan:<input type="text" name='plan'>
+    <button type='submit'>Submit</button><br>
+</form>
+<button ><a href='/profile'>Cancel</a></button>
+<a href='/logout'>logout</a>

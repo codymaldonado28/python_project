@@ -1,0 +1,18 @@
+<h1>{{trip.destination}}</h1>
+Trip Start:{{trip.start_date}}<br>
+Trip End:{{trip.end_date}}<br>
+Trip Plan:{{trip.plan}}<br>
+Trip Created:{{trip.created_at}}<br>
+
+Trip Creator: {{trip.creator.first_name}}<br>
+
+People who joined the trip:
+<ul>
+{%for user in trip.users.all%}
+    {%if user.id != trip.creator.id%}
+        <li>{{user.first_name}} {{user.last_name}}</li>
+    {%endif%}
+{%endfor%}
+</ul>
+<a href='/profile'>dashboard</a>
+<a href='/logout'>logout</a>

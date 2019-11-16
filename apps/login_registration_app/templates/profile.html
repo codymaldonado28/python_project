@@ -1,0 +1,61 @@
+<h1>Profile</h1>
+<p>{{request.session.id}}</p>
+<p>{{user.email}}</p>
+<p>{{user.first_name}}</p>
+<p>{{user.last_name}}</p>
+<a href='/trip/add'>Create Trip</a><br>
+<a href='/logout'>logout</a>
+<h1>Your Trips</h1>
+<table>
+    <tr>
+        <th>Destination</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Plan</th>
+        <th>Action</th>
+    </tr>
+        {%for trip in others_trip%}
+                <tr>
+                    <td><a href='/trip/{{trip.id}}'>{{trip.destination}}</a></td>
+                    <td>{{trip.start_date}}</td>
+                    <td>{{trip.end_date}}</td>
+                    <td>{{trip.plan}}</td>
+                    <td>
+                        <a href='trip/{{trip.id}}/cancel'>Cancel</a>
+                    </td>
+                </tr>
+        {%endfor%}
+        {%for trip in creator_trip%}
+                <tr>
+                    <td><a href='/trip/{{trip.id}}'>{{trip.destination}}</a></td>
+                    <td>{{trip.start_date}}</td>
+                    <td>{{trip.end_date}}</td>
+                    <td>{{trip.plan}}</td>
+                    <td>
+                        <a href='trip/edit/{{trip.id}}'>edit</a>
+                        <a href='trip/{{trip.id}}/delete'>delete</a>
+                    </td>
+                </tr>
+        {%endfor%}
+</table>
+<h2>Other Peoples Trips</h2>
+<table>
+    <tr>
+        <th>Destination</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Plan</th>
+        <th>Action</th>
+    </tr>
+    {%for trip in trips%}
+    <tr>
+        <td><a href='/trip/{{trip.id}}'>{{trip.destination}}</a></td>
+        <td>{{trip.start_date}}</td>
+        <td>{{trip.end_date}}</td>
+        <td>{{trip.plan}}</td>
+        <td>
+            <a href='/trip/{{trip.id}}/join'>JOIN</a>
+        </td>
+    </tr>
+    {%endfor%}
+</table>
